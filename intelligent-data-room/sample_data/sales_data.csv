@@ -1,0 +1,46 @@
+Order_ID,Order_Date,Customer_ID,Customer_Name,Segment,Country,City,State,Region,Category,Sub_Category,Product_Name,Sales,Quantity,Discount,Profit,Shipping_Cost,Ship_Date,Ship_Mode,Year,Month,Day
+1,2018-01-06,1000,Anna Andreadi,Consumer,United States,New York,New York,East,Furniture,Bookcases,Personal Safety Lock Box,261.96,2,0,41.9136,35.1145,2018-01-14,Second Class,2018,1,6
+2,2018-01-07,1001,Bob Baker,Consumer,United States,Los Angeles,California,West,Office Supplies,Binders,Standard White Binders,731.94,3,0,219.582,40.3385,2018-01-12,Second Class,2018,1,7
+3,2018-01-08,1002,Carol Chen,Corporate,Canada,Montreal,Quebec,Canada,Technology,Machines,Hewlett Packard LaserJet Pro P1102w Printer,1154.06,1,0,288.515,51.6165,2018-02-12,First Class,2018,1,8
+4,2018-01-09,1003,Diana Davis,Consumer,United States,Seattle,Washington,West,Office Supplies,Appliances,Cisco Smart Phone,510.8,2,0.2,34.062,69.1275,2018-01-11,Same Day,2018,1,9
+5,2018-01-10,1004,Eve Evans,Consumer,United States,New York,New York,East,Furniture,Chairs,Hon Deluxe Fabric Upholstered Stackable Chairs,668.95,6,0,58.6965,27.1365,2018-01-10,Second Class,2018,1,10
+6,2018-02-11,1005,Frank Frank,Consumer,United States,Boston,Massachusetts,East,Office Supplies,Paper,Domtar Copy Paper Premier 8.5x11 Bright White 20lb,168.95,3,0.2,6.2348,14.1165,2018-02-14,Standard Class,2018,2,11
+7,2018-02-12,1006,Grace Garcia,Consumer,United States,Miami,Florida,South,Technology,Phones,iPhone 6 Plus,899.99,1,0,269.997,22.475,2018-02-18,Standard Class,2018,2,12
+8,2018-02-13,1007,Henry Hamilton,Corporate,United States,Chicago,Illinois,Central,Office Supplies,Fasteners,Staples Standard Staples 1/4" 105 Count,19.99,2,0.5,1.5992,2.345,2018-02-15,Standard Class,2018,2,13
+9,2018-03-14,1008,Iris Ingram,Consumer,United States,Denver,Colorado,West,Furniture,Tables,IKEA Bekant Conference Table,999.95,1,0,299.985,45.621,2018-03-21,Standard Class,2018,3,14
+10,2018-03-15,1009,Jack Jackson,Consumer,United States,Houston,Texas,South,Office Supplies,Pens,Mont Blanc Meisterstuck Premium Pens,89.99,5,0.1,33.996,5.675,2018-03-17,Same Day,2018,3,15
+11,2018-04-16,1010,Karen Kim,Consumer,United States,Phoenix,Arizona,West,Technology,Copiers,Xerox WorkCentre 5845 Multifunction Printer,2999.99,1,0.05,689.9976,125.4,2018-04-20,First Class,2018,4,16
+12,2018-04-17,1011,Leo Lee,Consumer,United States,Philadelphia,Pennsylvania,East,Furniture,Furnishings,Marco Group Chromatic Executive Wooden Credenza,1250.0,1,0,375.0,72.5,2018-04-21,Standard Class,2018,4,17
+13,2018-05-18,1012,Maya Martinez,Consumer,United States,San Antonio,Texas,South,Office Supplies,Binders,Smead Two-Pocket Folder 375 Sheets Capacity,12.99,10,0.2,9.234,3.45,2018-05-22,Standard Class,2018,5,18
+14,2018-05-19,1013,Noah Nelson,Corporate,United States,San Diego,California,West,Technology,Accessories,Belkin USB-C Hub Multi-Port Adapter,79.95,2,0,31.98,8.5,2018-05-24,Same Day,2018,5,19
+15,2018-06-20,1014,Olivia O'Neill,Consumer,United States,Dallas,Texas,South,Furniture,Chairs,Steelcase Leap Ergonomic Task Chair,595.0,1,0.15,149.875,42.3,2018-06-25,Standard Class,2018,6,20
+16,2019-01-05,1015,Peter Parker,Consumer,United States,Austin,Texas,South,Office Supplies,Art,Crayola Crayons 64 Count Classic Colors,4.99,20,0.2,15.968,2.1,2019-01-12,Standard Class,2019,1,5
+17,2019-01-06,1016,Quinn Quinn,Consumer,United States,Jacksonville,Florida,South,Technology,Phones,Samsung Galaxy S9+,799.99,1,0,239.997,18.5,2019-01-10,Second Class,2019,1,6
+18,2019-02-07,1017,Rachel Rodriguez,Corporate,United States,Fort Worth,Texas,South,Furniture,Bookcases,Bush Business Furniture Series C 5 Shelf Bookcase,349.95,1,0,104.985,28.4,2019-02-14,Standard Class,2019,2,7
+19,2019-02-08,1018,Sam Sanchez,Consumer,United States,Columbus,Ohio,Central,Office Supplies,Labels,Avery 5160 Mailing Labels,9.99,10,0.3,21.6768,3.2,2019-02-15,Standard Class,2019,2,8
+20,2019-03-09,1019,Tina Thompson,Consumer,United States,Charlotte,North Carolina,South,Technology,Machines,Brother HL-L2350DW Wireless Monochrome Laser Printer,299.99,1,0.1,89.997,18.75,2019-03-18,Standard Class,2019,3,9
+21,2019-03-10,1020,Uma Upadhyay,Consumer,United States,Indianapolis,Indiana,Central,Furniture,Tables,Steelcase Series 9000 L-Shaped Desk,799.95,1,0.05,239.985,52.1,2019-03-20,First Class,2019,3,10
+22,2019-04-11,1021,Victor Vasquez,Consumer,United States,Seattle,Washington,West,Office Supplies,Supplies,Scotch Magic Tape 3/4" x 2592 Yards,5.99,20,0.15,44.928,2.5,2019-04-18,Standard Class,2019,4,11
+23,2019-04-12,1022,Whitney White,Corporate,United States,Denver,Colorado,West,Technology,Copiers,Canon imagePRESS C7010 Color Printer,5499.99,1,0.1,1649.997,185.4,2019-04-22,First Class,2019,4,12
+24,2019-05-13,1023,Xander Xavier,Consumer,United States,Washington,District of Columbia,East,Furniture,Furnishings,Humanscale Freedom Headrest Fully Adjustable,199.99,2,0.2,63.998,19.5,2019-05-20,Standard Class,2019,5,13
+25,2019-05-14,1024,Yara Young,Consumer,United States,Boston,Massachusetts,East,Office Supplies,Paper,Xerox Premium Digital Carbonless Paper 8.5 x 11",19.99,50,0.25,399.75,15.4,2019-05-22,Standard Class,2019,5,14
+26,2019-06-15,1025,Zoe Zhang,Consumer,United States,El Paso,Texas,South,Technology,Accessories,Apple AirPods Pro,249.99,2,0.05,149.995,12.8,2019-06-22,Same Day,2019,6,15
+27,2020-01-04,1026,Aaron Anderson,Consumer,United States,Memphis,Tennessee,South,Furniture,Chairs,Herman Miller Mirra 2 Task Chair,685.0,1,0,205.5,48.9,2020-01-15,Standard Class,2020,1,4
+28,2020-01-05,1027,Brenda Brown,Consumer,United States,Boston,Massachusetts,East,Office Supplies,Binders,Fellowes Plastic Comb Binding Supplies,24.99,5,0.15,99.96,4.2,2020-01-12,Standard Class,2020,1,5
+29,2020-02-06,1028,Christopher Clark,Corporate,United States,Nashville,Tennessee,South,Technology,Machines,Xerox WorkCentre 7845 Multifunction Color Printer,6999.99,1,0.1,2099.997,225.6,2020-02-18,First Class,2020,2,6
+30,2020-02-07,1029,Denise Davis,Consumer,United States,Baltimore,Maryland,East,Furniture,Furnishings,Teknion Leverage Modular Workstations,1599.99,2,0,959.994,118.4,2020-02-20,First Class,2020,2,7
+31,2020-03-08,1030,Ethan Evans,Consumer,United States,Louisville,Kentucky,Central,Office Supplies,Supplies,3M Post-it Notes 3" x 3" Canary Yellow 100 Sheets,2.99,100,0.3,209.3,5.1,2020-03-19,Standard Class,2020,3,8
+32,2020-03-09,1031,Fiona Foster,Consumer,United States,Portland,Oregon,West,Technology,Phones,OnePlus 8 Pro,899.0,1,0.1,269.7,20.3,2020-03-22,Second Class,2020,3,9
+33,2020-04-10,1032,Gregory Grant,Consumer,United States,Las Vegas,Nevada,West,Furniture,Bookcases,Sauder Premier Tall Bookcase,299.99,1,0.2,59.998,25.6,2020-04-20,Standard Class,2020,4,10
+34,2020-04-11,1033,Hannah Harris,Corporate,United States,Milwaukee,Wisconsin,Central,Office Supplies,Binders,Smead SuperTab Colored File Folders,14.99,20,0.25,74.95,3.8,2020-04-21,Standard Class,2020,4,11
+35,2020-05-12,1034,Iris Ingram,Consumer,United States,Albuquerque,New Mexico,West,Technology,Accessories,Anker PowerCore 20000mAh Power Bank,39.99,5,0.1,149.96,7.5,2020-05-22,Same Day,2020,5,12
+36,2020-05-13,1035,Jack Jackson,Consumer,United States,Tucson,Arizona,West,Furniture,Chairs,Fully Jarvis Bamboo Desk with Electric Frame,749.99,1,0,224.997,68.2,2020-05-25,Standard Class,2020,5,13
+37,2020-06-14,1036,Karen Kim,Consumer,United States,Fresno,California,West,Office Supplies,Fasteners,Swingline 747 Business Full Strip Desk Stapler,22.99,3,0.1,61.973,5.6,2020-06-24,Standard Class,2020,6,14
+38,2021-01-03,1037,Leo Lee,Consumer,United States,Sacramento,California,West,Technology,Machines,Ricoh MP C2003 Color Multifunction Printer,8999.99,1,0.05,2699.997,265.3,2021-01-15,First Class,2021,1,3
+39,2021-01-04,1038,Maya Martinez,Consumer,United States,Long Beach,California,West,Furniture,Tables,Varidesk Pro Plus 60 Electric Sit-Stand Desk,599.99,1,0.1,179.997,51.4,2021-01-12,Standard Class,2021,1,4
+40,2021-02-05,1039,Noah Nelson,Corporate,United States,Kansas City,Missouri,Central,Office Supplies,Paper,Mohawk Fine Bright White Cardstock 80 lb,29.99,25,0.2,249.9,12.3,2021-02-15,Standard Class,2021,2,5
+41,2021-02-06,1040,Olivia O'Neill,Consumer,United States,Mesa,Arizona,West,Technology,Copiers,Konica Minolta bizhub C226 Color Multifunction Printer,4500.0,1,0.15,1125.0,185.5,2021-02-20,First Class,2021,2,6
+42,2021-03-07,1041,Peter Parker,Consumer,United States,Virginia Beach,Virginia,South,Furniture,Furnishings,Knoll ReGeneration Modular Lounge Seating,2499.99,3,0.05,3749.985,214.6,2021-03-22,First Class,2021,3,7
+43,2021-03-08,1042,Quinn Quinn,Consumer,United States,Atlanta,Georgia,South,Office Supplies,Supplies,Pentel Energel Premium Retractable Gel Pens,4.99,50,0.2,124.75,8.2,2021-03-25,Standard Class,2021,3,8
+44,2021-04-09,1043,Rachel Rodriguez,Consumer,United States,Austin,Texas,South,Technology,Phones,Apple iPhone 12 Pro Max,1099.99,1,0,329.997,24.5,2021-04-20,Same Day,2021,4,9
+45,2021-04-10,1044,Sam Sanchez,Corporate,United States,Dallas,Texas,South,Furniture,Chairs,Steelcase Reply Stool with Back,395.0,2,0.1,237.0,28.6,2021-04-22,Standard Class,2021,4,10
