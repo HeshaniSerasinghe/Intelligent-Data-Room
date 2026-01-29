@@ -1,0 +1,18 @@
+[theme]
+# Professional Dark Blue Data Room Theme
+backgroundColor = "#0E1117" # Dark background
+font = "sans serif" 
+primaryColor = "#007AFF" # Professional Blue (iOS-style)
+secondaryBackgroundColor = "#262730" # Darker gray for sidebar/cards
+textColor = "#FAFAFA" # Light text for dark mode
+
+[server]
+enableXsrfProtection = true
+headless = true
+port = 8501
+
+[browser]
+gatherUsageStats = false
+
+[runner]
+fastReruns = true
