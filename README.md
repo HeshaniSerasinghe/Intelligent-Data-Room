@@ -18,7 +18,6 @@
 - **AST Validation**: Scans generated code for dangerous operations
 - **Sandboxed Execution**: Restricted environment with whitelisted modules
 - **File Security**: Prevents directory traversal and validates file types
-- 🛡️ See [SECURITY.md](SECURITY.md) for full security documentation
 
 ### ⚡ Performance Optimized
 
@@ -26,7 +25,6 @@
 - **DataFrame Caching**: Instant reload with `@st.cache_data`
 - **Smart Pagination**: Smooth handling of 100K+ row datasets
 - **LRU Cache**: Intelligent cache management with TTL
-- 🚀 See [PERFORMANCE_IMPLEMENTATION.md](PERFORMANCE_IMPLEMENTATION.md) for details
 
 ### 🤖 Multi-Agent AI System
 
@@ -344,7 +342,6 @@ openpyxl>=3.1.0           # Excel support
 - ✅ Whitelisted modules and builtins only
 - ✅ File type validation and size limits
 - ✅ `.gitignore` prevents secret leakage
-- 🛡️ Full security documentation in [SECURITY.md](SECURITY.md)
 - ✅ 21/21 security tests passing
 
 ---
@@ -375,7 +372,6 @@ openpyxl>=3.1.0           # Excel support
 
 ### High Priority
 
-- **📊 More Chart Types**: Support for scatter plots, heatmaps, box plots, histograms
 - **💾 Database Connections**: Direct connection to PostgreSQL, MySQL, MongoDB
 - **📁 Multiple File Upload**: Analyze multiple datasets simultaneously with JOIN operations
 - **🔄 Data Refresh**: Auto-reload data from source without re-upload
@@ -433,78 +429,6 @@ openpyxl>=3.1.0           # Excel support
 
 ---
 
-## 📄 License
-
-MIT License
-
----
-
-**Built with ❤️ for data exploration**
-source venv/bin/activate # On Windows: venv\Scripts\activate
-
-# Install dependencies
-
-pip install -r requirements.txt
-
-# Configure API key
-
-cp .env.example .env
-
-# Edit .env and add your GOOGLE_API_KEY
-
-````
-
-### 3. Run Locally
-
-```bash
-streamlit run app.py
-````
-
-Visit `http://localhost:8501` in your browser.
-
-### 4. Deploy to Streamlit Cloud
-
-1. Push to GitHub
-2. Go to [Streamlit Cloud](https://streamlit.io/cloud)
-3. Connect your repo
-4. Add `GOOGLE_API_KEY` in Secrets
-5. Deploy!
-
-## 📊 Sample Queries
-
-### Easy
-
-- "Create a bar chart showing total Sales and Profit for each Category"
-- "Show the distribution of Sales across Regions with a pie chart"
-- "Which Customer Segment places the most orders?"
-
-### Medium
-
-- "Which Sub-Categories are unprofitable on average?"
-- "Compare Sales Trend across different Ship Modes over time"
-- "Show Top 10 Customers by Profit"
-
-### Advanced
-
-- "Is there a correlation between Discount and Profit?"
-- "Calculate the Return Rate by Region"
-- "Show me the top customer and their purchase history"
-
-## 📁 Project Structure
-
-```
-intelligent-data-room/
-├── app.py                 # Main Streamlit app
-├── agents.py              # Planner + Executor classes
-├── config.py              # System prompts & constants
-├── utils.py               # Helper functions
-├── requirements.txt       # Dependencies
-├── .env.example            # API key template
-├── .gitignore             # Git ignore rules
-├── README.md              # This file
-└── sample_data/
-    └── sales_data.csv     # Test dataset
-```
 
 ## 🔧 Configuration
 
@@ -537,27 +461,27 @@ Test with the **Sample Superstore dataset** (9,995 rows) included in the project
 
 ## 🎯 Evaluation Criteria
 
-### System Prompting ⭐⭐⭐⭐⭐
+### ⭐System Prompting 
 
 - Clear agent role definitions
 - Separate prompts for Planner vs Executor
 - Shown via "Thinking" expander in UI
 
-### Code Quality ⭐⭐⭐⭐
+### ⭐Code Quality 
 
 - Type hints on all functions
 - Docstrings for classes/methods
 - Modular file structure
 - Clean error messages
 
-### User Experience ⭐⭐⭐
+### ⭐User Experience 
 
 - Clean chat interface
 - Readable visualizations
 - Clear "thinking" process display
 - Helpful error messages
 
-### Reasoning ⭐⭐⭐⭐
+### ⭐Reasoning 
 
 - Expander showing Planner's plan
 - Explanation of results
@@ -585,19 +509,23 @@ Test with the **Sample Superstore dataset** (9,995 rows) included in the project
 
 ## 📹 Demo Video
 
-[Loom link coming soon]
+https://kommodo.ai/recordings/AIlfComwNhr50EB2Q5yd
 
 - Shows file upload
 - Demonstrates agent thinking
 - Visualizes results
 - Shows context retention with follow-ups
 
+## 📹 Deployed App (Streamlit Cloud)
+
+https://intelligent-data-room-7kg748njvk8ax72np6cqiy.streamlit.app/
+
 ## 📝 License
 
 MIT - Free to use and modify
 
 ## 👨‍💻 Author
-
+Heshani Serasinghe
 Built for Simplview GenAI & Full Stack Engineering Internship
 
 ---
