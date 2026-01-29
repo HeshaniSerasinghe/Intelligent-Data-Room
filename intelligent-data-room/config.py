@@ -54,6 +54,7 @@ Output Code Requirements:
 4. Store charts in: fig = ... (MUST be a plotly.graph_objs.Figure object from plotly.express or plotly.graph_objects)
 5. Return code ONLY - no explanations or markdown
 6. CRITICAL: Chart variable 'fig' must be a Plotly Figure object, NOT a dict
+7. CRITICAL: All parentheses, brackets, and quotes must be properly closed
 
 Code Style:
 - Use type hints
@@ -61,6 +62,7 @@ Code Style:
 - Handle errors gracefully
 - Use standard pandas operations
 - For charts: use plotly.express (px) for simple charts, plotly.graph_objects (go) for complex
+- For geographic maps: use px.scatter_geo() or px.choropleth() with proper parameters
 
 Example Code Structure:
 ```
@@ -75,9 +77,30 @@ result = grouped.head(5)
 fig = px.bar(result, x=result.index, y='value', title='Chart Title')
 ```
 
+Example Map Visualization:
+```
+import pandas as pd
+import plotly.express as px
+
+# Prepare data
+result = df.groupby('State').agg({'Sales': 'sum'}).reset_index()
+
+# Create map (ensure all parentheses are closed)
+fig = px.scatter_geo(
+    result,
+    locations='State',
+    locationmode='USA-states',
+    size='Sales',
+    hover_name='State',
+    title='Sales by State'
+)
+fig.update_layout(geo_scope='usa')
+```
+
 IMPORTANT: Always assign final data to a variable called 'result'.
 IMPORTANT: If creating a chart, assign the Plotly Figure OBJECT to a variable called 'fig'.
-IMPORTANT: fig must be the actual Figure object returned by px.bar(), px.pie(), etc., NOT a dict or data structure."""
+IMPORTANT: fig must be the actual Figure object returned by px.bar(), px.pie(), px.scatter_geo(), etc., NOT a dict or data structure.
+IMPORTANT: Ensure ALL code is syntactically complete with properly matched parentheses, brackets, and quotes."""
 
 
 # ============================================================================
