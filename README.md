@@ -77,7 +77,10 @@
 - ✅ **Syntax Validation**: Python syntax checking before execution
 - ✅ **Professional Theme**: Dark blue theme with iOS-style blue accents (#007AFF)
 
+
+The assignment recommended PandasAI, but I encountered significant version conflicts with the latest Gemini 1.5 Flash models (v1beta API 404 errors). To ensure the application was robust, secure, and compatible with the latest Google GenAI SDK, I implemented a custom Executor Agent that mirrors PandasAI's functionality but adds stricter AST-based code security and native Plotly integration for better interactivity.
 ---
+
 
 ## 🚀 Quick Start
 
