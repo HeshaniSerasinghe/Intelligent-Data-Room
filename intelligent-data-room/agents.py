@@ -341,7 +341,8 @@ class ExecutorAgent:
         self,
         user_query: str,
         plan: str,
-        df: pd.DataFrame
+        df: pd.DataFrame,
+        max_retries: int = 2
     ) -> Tuple[Any, Optional[str], str]:
         """
         Execute the plan on the DataFrame with security checks.
@@ -350,43 +351,63 @@ class ExecutorAgent:
             user_query: Original user question
             plan: Execution plan from PlannerAgent
             df: DataFrame to analyze
+            max_retries: Number of retries for code generation on syntax errors
             
         Returns:
             Tuple of (result, chart_html_or_none, explanation)
         """
-        try:
-            # Step 1: Generate code from plan
-            logger.info("📝 Generating code from plan...")
-            code = self.generate_code(plan, df, user_query)
-            
-            # Step 2: Clean and validate code
-            logger.info("🔍 Validating code...")
-            code = self._clean_code(code)
-            
-            # Step 3: Execute code with security checks
-            logger.info("⚙️ Executing code...")
-            result, chart_html = self._execute_code(code, df, user_query)
-            
-            # Step 4: Generate explanation
-            explanation = self._generate_explanation(user_query, result)
-            
-            logger.info("✅ Plan executed successfully")
-            return result, chart_html, explanation
+        last_error = None
         
-        except CodeValidationError as e:
-            logger.error(f"❌ Security validation failed: {str(e)}")
-            # Re-raise so app.py can handle with troubleshooting
-            raise ValueError(f"Security validation failed: {str(e)}")
-        
-        except ExecutionTimeoutError as e:
-            logger.error(f"❌ Execution timeout: {str(e)}")
-            # Re-raise so app.py can handle with troubleshooting
-            raise ValueError(f"Query execution timeout: {str(e)}")
+        for attempt in range(max_retries + 1):
+            try:
+                # Step 1: Generate code from plan
+                if attempt == 0:
+                    logger.info("📝 Generating code from plan...")
+                else:
+                    logger.info(f"📝 Regenerating code (attempt {attempt + 1}/{max_retries + 1})...")
+                
+                code = self.generate_code(plan, df, user_query, previous_error=last_error if attempt > 0 else None)
+                
+                # Log generated code for debugging
+                logger.debug(f"Generated code:\n{code}\n{'='*50}")
+                
+                # Step 2: Clean and validate code
+                logger.info("🔍 Validating code...")
+                code = self._clean_code(code)
+                
+                # Step 3: Execute code with security checks
+                logger.info("⚙️ Executing code...")
+                result, chart_html = self._execute_code(code, df, user_query)
+                
+                # Step 4: Generate explanation
+                explanation = self._generate_explanation(user_query, result)
+                
+                logger.info("✅ Plan executed successfully")
+                return result, chart_html, explanation
             
-        except Exception as e:
-            logger.error(f"❌ Error executing plan: {str(e)}")
-            # Re-raise so app.py can handle with troubleshooting
-            raise
+            except CodeValidationError as e:
+                last_error = str(e)
+                logger.error(f"❌ Code validation failed (attempt {attempt + 1}): {last_error}")
+                
+                if attempt >= max_retries:
+                    # Out of retries, give up
+                    raise ValueError(f"Code generation failed after {max_retries + 1} attempts. Last error: {last_error}")
+                
+                # Continue to next retry
+                continue
+            
+            except ExecutionTimeoutError as e:
+                logger.error(f"❌ Execution timeout: {str(e)}")
+                # Re-raise so app.py can handle with troubleshooting
+                raise ValueError(f"Query execution timeout: {str(e)}")
+                
+            except Exception as e:
+                logger.error(f"❌ Error executing plan: {str(e)}")
+                # Re-raise so app.py can handle with troubleshooting
+                raise
+        
+        # Should not reach here, but just in case
+        raise ValueError(f"Security validation failed: {last_error}")
     
     def _clean_code(self, code: str) -> str:
         """
@@ -405,6 +426,10 @@ class ExecutorAgent:
             code = code[6:]
         code = code.strip()
         
+        # Remove closing markdown if present
+        if code.endswith("```"):
+            code = code[:-3].strip()
+        
         # Ensure proper imports
         lines = code.split("\n")
         has_pandas = any("import pandas" in line for line in lines)
@@ -417,7 +442,22 @@ class ExecutorAgent:
             new_lines.append("import plotly.express as px")
         
         new_lines.extend(lines)
-        return "\n".join(new_lines)
+        cleaned_code = "\n".join(new_lines)
+        
+        # Quick syntax check before returning
+        try:
+            ast.parse(cleaned_code)
+        except SyntaxError as e:
+            logger.warning(f"Syntax error detected in cleaned code: {e}")
+            # Try to identify and report the problematic line
+            code_lines = cleaned_code.split("\n")
+            if hasattr(e, 'lineno') and e.lineno and e.lineno <= len(code_lines):
+                problematic_line = code_lines[e.lineno - 1] if e.lineno > 0 else "<unknown>"
+                logger.error(f"Problematic line {e.lineno}: {problematic_line}")
+            # Re-raise with more context
+            raise CodeValidationError(f"Syntax error in generated code at line {e.lineno}: {e.msg}. Line content: {problematic_line if 'problematic_line' in locals() else 'unknown'}")
+        
+        return cleaned_code
     
     def _execute_code(
         self,
@@ -591,7 +631,8 @@ class ExecutorAgent:
         self,
         plan: str,
         df: pd.DataFrame,
-        user_query: str
+        user_query: str,
+        previous_error: Optional[str] = None
     ) -> str:
         """
         Generate Python code based on the execution plan.
@@ -600,11 +641,27 @@ class ExecutorAgent:
             plan: Execution plan from Planner
             df: DataFrame schema
             user_query: Original question
+            previous_error: If retrying, the previous syntax error message
             
         Returns:
             Generated Python code as string
         """
         schema_info = f"Columns: {list(df.columns)}\nShape: {df.shape}"
+        
+        error_context = ""
+        if previous_error:
+            error_context = f"""
+
+PREVIOUS ATTEMPT FAILED WITH ERROR:
+{previous_error}
+
+Please fix the syntax error and ensure:
+1. ALL parentheses are properly closed
+2. ALL brackets are properly closed
+3. ALL quotes are properly matched
+4. Code is syntactically complete
+5. No truncated lines or incomplete statements
+"""
         
         prompt = f"""{self.system_prompt}
 
@@ -615,10 +672,11 @@ User Question: {user_query}
 
 Execution Plan from Planner:
 {plan}
-
+{error_context}
 Generate clean, executable Python code using pandas that follows this plan exactly.
 Start with 'import pandas as pd' and 'import plotly.express as px'.
 Return the code only, no explanations.
+CRITICAL: Ensure all parentheses, brackets, and quotes are properly matched and closed.
 """
         
         try:
