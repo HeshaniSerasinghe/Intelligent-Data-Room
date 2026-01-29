@@ -298,9 +298,11 @@ The project includes **Sample Superstore.csv** with:
 
 ## 🐛 Troubleshooting
 
-### "API Key Missing"
 
-- Create `.env` file with `GOOGLE_API_KEY=your_key`
+### "GOOGLE_API_KEY not configured"
+
+- Check `.env` file exists
+- Verify API key is correct
 - Restart Streamlit app
 
 ### "429 Too Many Requests"
@@ -317,6 +319,18 @@ The project includes **Sample Superstore.csv** with:
 
 - Check data preview in sidebar
 - Use exact column names from preview
+
+### "Failed to parse file"
+
+- Ensure CSV has headers
+- Check for special characters in column names
+- Try opening in Excel first
+
+### Charts not showing
+
+- Check plan includes visualization type
+- Verify Executor returned chart data
+- Look at error message in expander
 
 ---
 
@@ -429,36 +443,6 @@ openpyxl>=3.1.0           # Excel support
 
 ---
 
-
-## 🔧 Configuration
-
-Edit `config.py` to customize:
-
-- System prompts for agents
-- Gemini model selection
-- Temperature settings
-- UI constants
-
-## 🧪 Testing
-
-Test with the **Sample Superstore dataset** (9,995 rows) included in the project.
-
-**Key test scenarios:**
-
-1. Simple aggregation (sum, count, average)
-2. Grouping and sorting
-3. Chart generation (bar, pie, line)
-4. Follow-up questions with context
-5. Error handling (missing columns, invalid queries)
-
-**Test the provided sample prompts:**
-
-- "Create a bar chart showing total Sales and Profit for each Category"
-- "Which Customer Segment places the most orders?"
-- "Show the top 5 states by Sales"
-- "Compare Sales Trend across Ship Modes"
-- "Is there a correlation between Discount and Profit?"
-
 ## 🎯 Evaluation Criteria
 
 ### ⭐System Prompting 
@@ -487,25 +471,6 @@ Test with the **Sample Superstore dataset** (9,995 rows) included in the project
 - Explanation of results
 - Transparent agent communication
 
-## 🐛 Troubleshooting
-
-### "GOOGLE_API_KEY not configured"
-
-- Check `.env` file exists
-- Verify API key is correct
-- Restart Streamlit app
-
-### "Failed to parse file"
-
-- Ensure CSV has headers
-- Check for special characters in column names
-- Try opening in Excel first
-
-### Charts not showing
-
-- Check plan includes visualization type
-- Verify Executor returned chart data
-- Look at error message in expander
 
 ## 📹 Demo Video
 
