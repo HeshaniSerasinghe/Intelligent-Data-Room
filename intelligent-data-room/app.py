@@ -281,22 +281,22 @@ def load_dataframe_cached(file_path: str, file_name: str) -> tuple:
 
 
 @st.cache_data(ttl=CACHE_TTL, show_spinner=False)
-def get_dataframe_stats(df: pd.DataFrame) -> Dict[str, Any]:
+def get_dataframe_stats(_df: pd.DataFrame) -> Dict[str, Any]:
     """
     Get cached DataFrame statistics.
     
     Args:
-        df: DataFrame to analyze
+        _df: DataFrame to analyze (underscore prefix tells Streamlit not to hash)
         
     Returns:
         Dictionary with stats
     """
     return {
-        'rows': len(df),
-        'columns': len(df.columns),
-        'memory_mb': df.memory_usage(deep=True).sum() / (1024 * 1024),
-        'dtypes': df.dtypes.value_counts().to_dict(),
-        'null_counts': df.isnull().sum().to_dict(),
+        'rows': len(_df),
+        'columns': len(_df.columns),
+        'memory_mb': _df.memory_usage(deep=True).sum() / (1024 * 1024),
+        'dtypes': _df.dtypes.value_counts().to_dict(),
+        'null_counts': _df.isnull().sum().to_dict(),
     }
 
 # ============================================================================
